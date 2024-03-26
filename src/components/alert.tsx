@@ -1,18 +1,16 @@
-import { atom } from 'nanostores';
+import { ToggleNotification } from '../components/alertstore'
 import { useStore } from '@nanostores/solid'
 
-const NotificationToggle = atom<boolean>(true);
+//const NotificationToggle = atom<boolean>(true);
 
 export function toggleNotification() {
-	//const $notifications = useStore(NotificationToggle);
-	//NotificationToggle.set(!$notifications());
-	NotificationToggle.set(false);
+	ToggleNotification.set(false);
 }
 
 export function AlertList() {
 
-	const $notifications = useStore(NotificationToggle);
+	const $notifications = useStore(ToggleNotification);
 	console.log($notifications());
 
-	return  $notifications() ? (<li class={"bg-[red]"}>A TEMPLATE ALERT</li>) : null
+	return  $notifications() ? <li class={"bg-[red]"}>A TEMPLATE ALERT</li> : null
 }
